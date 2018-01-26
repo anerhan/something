@@ -58,6 +58,7 @@ def self.to_csv(deals, company)
 ### Что не так:
 
 1. Этот парсер не должен быть методом
+
 2. Скорее всего это экпорт в CSV  Company.deals без входящих доп-фильтров, а это значит что можно процессору  передать ID Компании и всю логику реализовать в прцессоре со своими свойствами и аксессорами e.g.:
 
 ```
@@ -65,6 +66,7 @@ csv_data = CompanyDealsCsvProcessor.new(company_id: company.id).export
 ```
 
 3. В том-же процессоре определить константу с полями хидера и т.д....
+
 4. Дополнение хидерами 'company.deal_custom_field_names' 
 
 ### Решение:
@@ -74,7 +76,8 @@ csv_data = CompanyDealsCsvProcessor.new(company_id: company.id).export
 ### Как бы я сделал:
 
 - Все хидер-поля перевел бы в labels, и каждому из label поставил бы в соответствие акссессор процессора.
-- Перевод каждого из label спятал бы с помощью I18n.
+- Перевод каждого из label спрятал бы с помощью I18n или просто в config/settings.yaml.
+
  ```
  class CompanyDealsCsvProcessor < BaseProcessor
     BASE_HEADERS = %w[deal_id name advertiser ...].freeze
