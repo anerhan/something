@@ -17,3 +17,5 @@ Something
 **Вывод:**
 Исходя из исследованного кода, можно твердо поставить 10  из 10 по нарушениям SOLID паттерна. 
 
+**Стандартное решение:**
+![schema](https://github.com/anerhan/something/blob/master/WebProjectArchitectureFlow.png)
